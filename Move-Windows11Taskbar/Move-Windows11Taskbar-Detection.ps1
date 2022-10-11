@@ -39,6 +39,8 @@ if(-not (Get-CimInstance Win32_OperatingSystem -Property *).Caption -like "*Wind
 if((Test-RegistryValue -Path $path -Value $value)){
     if((Get-ItemProperty -path $path -name $value).TaskbarAl -eq "0"){
         Exit 0
+    } else {
+        Exit 1
     }
 }else {
     Exit 1
